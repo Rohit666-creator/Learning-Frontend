@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+ /* Style the buttons that are used to open and close the accordion panel */
+
+.accordion{
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.btn{
+  padding: 20px 40px;
+  background-color: DodgerBlue;
+  border:none;
+  color:white;
+  font-size:30px
+}
+
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+    </style>
+</head>
+<body>
+        <button class="accordion">Section1</button>
+        <div class="panel">
+            <div>
+                &nbsp;
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="col-md-4">
+                        <!--            <button id="adminPage" onlick="window.location.href='https://www.w3docs.com';">ADMIN</button>-->
+                        <button id="adminPage" class="btn" onlick="window.location.href='https://www.w3docs.com';" ><i class="fa fa-user" style="font-size:xxx-large"></i>&nbsp;Admin</button>
+                        &nbsp;&nbsp;
+                        <button id="userMaster" class="btn"><i class="fa fa-pencil-square-o" style="font-size:xxx-large"></i>&nbsp;User</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                &nbsp;
+            </div>
+        </div>
+
+        <button class="accordion">Section2</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+
+        <button class="accordion">Section3</button>
+        <div class="panel">
+            <p>Lorem ipsum...</p>
+        </div>
+
+        <div style="height:68vh">
+            <section id="actionsBtnBar">
+                <div class="accordion-container">
+                    <div class="col-md-12 menuHeading">
+                        <i class="fa fa-minus-circle pull-right iIconChange" aria-hidden="true" data-toggle="collapse" data-target="#section4"></i>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row collapse in" id="section4">
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+</body>
+</html>
+
+
+<script>
+    $(document).ready(function(){
+
+        var acc= document.getElementsByClassName("accordion");
+        var i;
+
+        for(i = 0;i < acc.length; i++) {
+            acc[i].addEventListener("click",function(){
+
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+
+                this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if(panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                }else{
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+    });
+
+
+
+
+</script>
+
+$(".accordion").click(function() {
+            $(".accordion").removeClass("active");
+            $(this).addClass("active");
+          });
+
+
+
+$('.iIconChange').click(function(){
+            if($(this).hasClass('collapsed')) {
+                $(this).removeClass('fa fa-plus-circle pull-right iIconChange');
+                $(this).addClass('fa fa-minus-circle pull-right iIconChange');
+            }
+            else {
+                console.log('not collapsed');
+                $(this).removeClass('fa fa-minus-circle' pull-right iIconChange);
+                $(this).addClass('fa fa-plus-circle pull-right iIconChange');
+            }
+        });
